@@ -1,0 +1,11 @@
+vendor
+.idea
+.phpunit.result.cache
+.phpunit.cache
+composer.lock
+.editorconfig
+.php_cs
+.env
+workbench
+ray.php
+.temp

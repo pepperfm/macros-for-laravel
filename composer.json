@@ -1,0 +1,51 @@
+{
+  "name": "pepperfm/macros-for-laravel",
+  "description": "A small macro registry for Laravel facades / macroable classes.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4",
+    "illuminate/support": "^12.0",
+    "illuminate/pagination": "^12.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^10.9",
+    "pestphp/pest": "^4.0",
+    "pestphp/pest-plugin-laravel": "^4.0",
+    "phpunit/phpunit": "^12.0",
+    "spatie/laravel-ray": "^1.37"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pepperfm\\LaravelMacros\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Pepperfm\\LaravelMacros\\Tests\\": "tests"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Pepperfm\\LaravelMacros\\Providers\\LaravelMacrosServiceProvider"
+      ],
+      "aliases": {
+        "Macros": "Pepperfm\\LaravelMacros\\Facades\\Macros"
+      },
+      "dont-discover": [
+        "illuminate/support",
+        "illuminate/pagination"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
