@@ -44,16 +44,7 @@ final class CollectionMacros implements MacroGroupContract
         $macros->macro(Collection::class, 'filterNotBlank', function (): Collection {
             /** @var Collection $this */
 
-            return $this->filter(static function ($value): bool {
-                if ($value === null) {
-                    return false;
-                }
-                if (is_string($value)) {
-                    return trim($value) !== '';
-                }
-
-                return true;
-            })->values();
+            return $this->filter(static fn ($value) => filled($value))->values();
         });
     }
 }

@@ -6,7 +6,7 @@ enable macro groups via config and register everything automatically at boot.
 ## Install
 
 ```bash
-composer require pepperfm/macros-for-laravel
+composer r pepperfm/macros-for-laravel
 ```
 
 Laravel auto-discovers the provider:
