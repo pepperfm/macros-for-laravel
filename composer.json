@@ -37,6 +37,11 @@
         "illuminate/support",
         "illuminate/pagination"
       ]
+    },
+    "phpstan": {
+      "includes": [
+        "extension.neon"
+      ]
     }
   },
   "scripts": {

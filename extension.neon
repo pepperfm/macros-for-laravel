@@ -1,0 +1,4 @@
+parameters:
+    stubFiles:
+        - stubs/arr.stub.php
+        - stubs/collection.stub.php
