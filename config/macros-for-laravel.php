@@ -44,6 +44,7 @@ return [
         'default' => [
             // Support helpers
             \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
+            \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
 
             // Stubs (enable as needed):
@@ -72,6 +73,6 @@ return [
     */
     // 'groups' => [
     //     \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
-    //     \Pepperfm\LaravelMacros\Groups\Support\CollectionFilterMacros::class => false,
+    //     \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => false,
     // ],
 ];

@@ -29,8 +29,8 @@ return [
     'profiles' => [
         'default' => [
             \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
-            \Pepperfm\LaravelMacros\Groups\Support\CollectionFilterMacros::class => false,
-            // \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
+            \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => false,
+            \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
         ],
         // 'http' => [
         //     \Pepperfm\LaravelMacros\Groups\Facades\ResponseMacros::class => true,
@@ -68,6 +68,21 @@ Arr::toArray($array, 'items');
 Arr::toEnum($array, 'status', Status::class, $default = null);
 ```
 
+### Arr native array helpers
+
+Available when `ArrNativeMacros` is enabled:
+
+```php
+Arr::values($array);
+Arr::keys($array);
+Arr::keyFirst($array);
+Arr::keyLast($array);
+Arr::flip($array);
+Arr::combine(['a', 'b'], [1, 2]);
+Arr::unique(['a', 'a', 'b']);
+Arr::reverse([1, 2, 3]);
+```
+
 ### Collection paginate
 
 Available when `CollectionMacros` is enabled:
@@ -78,7 +93,7 @@ collect([1, 2, 3])->paginate(2);
 
 ### Collection filters
 
-Available when `CollectionFilterMacros` is enabled:
+Available when `CollectionMacros` is enabled:
 
 ```php
 collect([1, null, 2])->filterNotNull();
