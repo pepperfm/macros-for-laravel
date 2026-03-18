@@ -9,6 +9,11 @@ use Pepperfm\LaravelMacros\Contracts\MacroManagerContract;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
+/*
+ * Collection::paginate(int $perPage, ?int $total = null, ?int $page = null, string $pageName = 'page'): LengthAwarePaginator
+ * Collection::filterNotNull(): Collection
+ * Collection::filterNotBlank(): Collection
+ */
 final class CollectionMacros implements MacroGroupContract
 {
     public function register(MacroManagerContract $macros): void
