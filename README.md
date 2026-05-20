@@ -30,6 +30,7 @@ return [
         'default' => [
             \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => true,
+            \Pepperfm\LaravelMacros\Groups\Cache\CacheCastMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
         ],
         // 'http' => [
@@ -99,6 +100,25 @@ Available when `CollectionMacros` is enabled:
 collect([1, null, 2])->filterNotNull();
 collect(['', ' ', 'ok', null])->filterNotBlank();
 ```
+
+### Cache typed getters
+
+Available when `CacheCastMacros` is enabled:
+
+```php
+cache()->bool('enabled', false);
+cache()->int('count', 0);
+cache()->toFloat('ratio', 0.0);
+cache()->toString('name', 'guest', true);
+cache()->toArray('filters', []);
+cache()->toEnum('status', Status::class, Status::Draft);
+
+Cache::toString('name', 'guest');
+cache()->store('redis')->int('count', 0);
+```
+
+`cache('name', 'guest')->toString()` is not supported because Laravel's `cache()`
+helper returns the raw cached value when a key is passed.
 
 ## Custom groups
 
