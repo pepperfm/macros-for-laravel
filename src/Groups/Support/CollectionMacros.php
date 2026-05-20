@@ -24,13 +24,13 @@ final class CollectionMacros implements MacroGroupContract
             ?int $page = null,
             string $pageName = 'page'
         ): LengthAwarePaginator {
-            $page = $page ?: LengthAwarePaginator::resolveCurrentPage($pageName);
-
-            /** @var LengthAwarePaginator $this */
+            /** @var Collection $this */
+            $page ??= LengthAwarePaginator::resolveCurrentPage($pageName);
+            $total ??= $this->count();
 
             return new LengthAwarePaginator(
                 items: $this->forPage($page, $perPage)->values(),
-                total: $total ?: $this->count(),
+                total: $total,
                 perPage: $perPage,
                 currentPage: $page,
                 options: [

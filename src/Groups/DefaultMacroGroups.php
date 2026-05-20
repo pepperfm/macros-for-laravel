@@ -6,6 +6,7 @@ namespace Pepperfm\LaravelMacros\Groups;
 
 use Pepperfm\LaravelMacros\Contracts\MacroGroupContract;
 use Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros;
+use Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros;
 use Pepperfm\LaravelMacros\Groups\Support\CollectionMacros;
 
 final class DefaultMacroGroups
@@ -16,9 +17,9 @@ final class DefaultMacroGroups
     public static function all(): array
     {
         return [
-            CollectionMacros::class,
-
             ArrCastMacros::class,
+            ArrNativeMacros::class,
+            CollectionMacros::class,
         ];
     }
 }

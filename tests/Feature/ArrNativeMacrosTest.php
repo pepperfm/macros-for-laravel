@@ -34,3 +34,8 @@ it('provides native array helpers', function () {
     expect(Arr::reverse([1, 2]))->toBe([2, 1]);
     expect(Arr::reverse(['a' => 1, 'b' => 2], true))->toBe(['b' => 2, 'a' => 1]);
 });
+
+it('throws when combining arrays with different lengths', function () {
+    expect(fn () => Arr::combine(['a'], [1, 2]))
+        ->toThrow(InvalidArgumentException::class);
+});

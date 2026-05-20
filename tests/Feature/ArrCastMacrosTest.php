@@ -33,4 +33,8 @@ it('registers collection paginate macro from list config', function () {
     expect($paginator->items())->toBe([1, 2]);
     expect($paginator->total())->toBe(5);
     expect($paginator->perPage())->toBe(2);
+
+    $emptyTotalPaginator = collect([1, 2, 3])->paginate(2, 0);
+
+    expect($emptyTotalPaginator->total())->toBe(0);
 });

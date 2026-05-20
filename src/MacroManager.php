@@ -9,6 +9,7 @@ use Pepperfm\LaravelMacros\Contracts\MacroGroupContract;
 use Pepperfm\LaravelMacros\Contracts\MacroManagerContract;
 use Illuminate\Support\Facades\Facade;
 use InvalidArgumentException;
+use Throwable;
 
 class MacroManager implements MacroManagerContract
 {
@@ -132,7 +133,37 @@ class MacroManager implements MacroManagerContract
                 continue;
             }
 
+            if ($this->targetHasMacro($target, $name)) {
+                if ($this->conflicts === self::CONFLICT_THROW) {
+                    throw new InvalidArgumentException(sprintf(
+                        'Macro [%s] already registered for target [%s].',
+                        $name,
+                        $target
+                    ));
+                }
+            }
+
             $target::macro($name, $macro);
+        }
+    }
+
+    /**
+     * @param class-string $target
+     */
+    private function targetHasMacro(string $target, string $name): bool
+    {
+        if (method_exists($target, 'hasMacro')) {
+            return (bool) $target::hasMacro($name);
+        }
+
+        if (!is_subclass_of($target, Facade::class)) {
+            return false;
+        }
+
+        try {
+            return (bool) $target::hasMacro($name);
+        } catch (Throwable) {
+            return false;
         }
     }
 }

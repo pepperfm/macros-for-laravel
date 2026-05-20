@@ -56,6 +56,10 @@ final class ArrNativeMacros implements MacroGroupContract
         });
 
         $macros->macro(Arr::class, 'combine', function (array $keys, array $values): array {
+            if (count($keys) !== count($values)) {
+                throw new \InvalidArgumentException('Arr::combine requires the same number of keys and values.');
+            }
+
             return array_combine($keys, $values);
         });
 

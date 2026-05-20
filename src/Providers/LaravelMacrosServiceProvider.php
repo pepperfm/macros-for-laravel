@@ -9,6 +9,7 @@ use Illuminate\Contracts\Container\Container;
 use InvalidArgumentException;
 use Pepperfm\LaravelMacros\Contracts\MacroGroupContract;
 use Pepperfm\LaravelMacros\Contracts\MacroManagerContract;
+use Pepperfm\LaravelMacros\Groups\DefaultMacroGroups;
 use Pepperfm\LaravelMacros\MacroManager;
 
 final class LaravelMacrosServiceProvider extends ServiceProvider
@@ -102,7 +103,7 @@ final class LaravelMacrosServiceProvider extends ServiceProvider
             }
         }
 
-        $groups = $cfg['groups'] ?? [];
+        $groups = $cfg['groups'] ?? DefaultMacroGroups::all();
 
         return is_array($groups) ? $groups : (array) $groups;
     }

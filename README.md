@@ -29,7 +29,7 @@ return [
     'profiles' => [
         'default' => [
             \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
-            \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => false,
+            \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
         ],
         // 'http' => [
