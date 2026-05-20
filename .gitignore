@@ -9,4 +9,9 @@ composer.lock
 workbench
 ray.php
 .temp
-AGENTS.md
+
+.ai-factory.json
+.agenst
+.codex
+.claude
+.mcp.json
