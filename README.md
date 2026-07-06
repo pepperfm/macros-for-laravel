@@ -31,6 +31,7 @@ return [
             \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Cache\CacheCastMacros::class => true,
+            \Pepperfm\LaravelMacros\Groups\Config\ConfigCastMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
         ],
         // 'http' => [
@@ -61,8 +62,8 @@ You can also use the legacy top-level groups list (no profiles):
 Available when `ArrCastMacros` is enabled:
 
 ```php
-Arr::bool($array, 'flag');
-Arr::int($array, 'count');
+Arr::toBool($array, 'flag');
+Arr::toInt($array, 'count');
 Arr::toFloat($array, 'ratio');
 Arr::toString($array, 'name', null, true);
 Arr::toArray($array, 'items');
@@ -106,19 +107,37 @@ collect(['', ' ', 'ok', null])->filterNotBlank();
 Available when `CacheCastMacros` is enabled:
 
 ```php
-cache()->bool('enabled', false);
-cache()->int('count', 0);
+cache()->toBool('enabled', false);
+cache()->toInt('count', 0);
 cache()->toFloat('ratio', 0.0);
 cache()->toString('name', 'guest', true);
 cache()->toArray('filters', []);
 cache()->toEnum('status', Status::class, Status::Draft);
 
 Cache::toString('name', 'guest');
-cache()->store('redis')->int('count', 0);
+cache()->store('redis')->toInt('count', 0);
 ```
 
 `cache('name', 'guest')->toString()` is not supported because Laravel's `cache()`
 helper returns the raw cached value when a key is passed.
+
+### Config typed getters
+
+Available when `ConfigCastMacros` is enabled:
+
+```php
+config()->toBool('features.enabled', false);
+config()->toInt('features.count', 0);
+config()->toFloat('features.ratio', 0.0);
+config()->toString('app.name', 'Laravel', true);
+config()->toArray('features.filters', []);
+config()->toEnum('features.status', Status::class, Status::Draft);
+
+Config::toString('app.name', 'Laravel');
+```
+
+`config('app.name', 'Laravel')->toString()` is not supported because Laravel's
+`config()` helper returns the raw config value when a key is passed.
 
 ## Custom groups
 

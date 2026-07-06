@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pepperfm\LaravelMacros\Tests;
 
 use Illuminate\Cache\Repository as CacheRepository;
+use Illuminate\Config\Repository as ConfigRepository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -18,6 +19,7 @@ abstract class TestCase extends Orchestra
     {
         Arr::flushMacros();
         CacheRepository::flushMacros();
+        ConfigRepository::flushMacros();
         Collection::flushMacros();
 
         parent::setUp();

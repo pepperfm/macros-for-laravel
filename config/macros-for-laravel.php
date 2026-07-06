@@ -46,6 +46,7 @@ return [
             \Pepperfm\LaravelMacros\Groups\Support\ArrCastMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\ArrNativeMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Cache\CacheCastMacros::class => true,
+            \Pepperfm\LaravelMacros\Groups\Config\ConfigCastMacros::class => true,
             \Pepperfm\LaravelMacros\Groups\Support\CollectionMacros::class => true,
 
             // Stubs (enable as needed):

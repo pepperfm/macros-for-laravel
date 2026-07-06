@@ -7,8 +7,8 @@ namespace Illuminate\Support;
 use ArrayAccess;
 
 /**
- * @method static bool bool(ArrayAccess|array $array, string|int|null $key, mixed $default = null, bool $smart = true)
- * @method static int int(ArrayAccess|array $array, string|int|null $key, mixed $default = null)
+ * @method static bool toBool(ArrayAccess|array $array, string|int|null $key, mixed $default = null, bool $smart = true)
+ * @method static int toInt(ArrayAccess|array $array, string|int|null $key, mixed $default = null)
  * @method static float toFloat(ArrayAccess|array $array, string|int|null $key, mixed $default = null)
  * @method static string toString(ArrayAccess|array $array, string|int|null $key, mixed $default = null, bool $trim = false)
  * @method static array toArray(ArrayAccess|array $array, string|int|null $key, array $default = [])

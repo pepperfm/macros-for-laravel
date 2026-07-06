@@ -9,8 +9,8 @@ use Pepperfm\LaravelMacros\Tests\AssocConfigTestCase;
 uses(AssocConfigTestCase::class);
 
 it('respects assoc group enable flags', function () {
-    expect(Arr::hasMacro('bool'))->toBeTrue();
+    expect(Arr::hasMacro('toBool'))->toBeTrue();
     expect(Collection::hasMacro('paginate'))->toBeFalse();
 
-    expect(Arr::bool(['flag' => 'true'], 'flag'))->toBeTrue();
+    expect(Arr::toBool(['flag' => 'true'], 'flag'))->toBeTrue();
 });

@@ -21,8 +21,8 @@ it('casts cached values from the cache helper', function () {
     cache()->put('filters', ['active' => true]);
     cache()->put('status', 'published');
 
-    expect(cache()->bool('enabled'))->toBeTrue();
-    expect(cache()->int('count'))->toBe(42);
+    expect(cache()->toBool('enabled'))->toBeTrue();
+    expect(cache()->toInt('count'))->toBe(42);
     expect(cache()->toFloat('ratio'))->toBe(3.14);
     expect(cache()->toString('name', trim: true))->toBe('Dmitry');
     expect(cache()->toArray('filters'))->toBe(['active' => true]);
@@ -31,8 +31,8 @@ it('casts cached values from the cache helper', function () {
 
 it('casts defaults from the cache helper', function () {
     expect(cache()->toString('missing-string', 123))->toBe('123');
-    expect(cache()->int('missing-int', '42'))->toBe(42);
-    expect(cache()->bool('missing-bool', 'yes'))->toBeTrue();
+    expect(cache()->toInt('missing-int', '42'))->toBe(42);
+    expect(cache()->toBool('missing-bool', 'yes'))->toBeTrue();
     expect(cache()->toFloat('missing-float', '2.5'))->toBe(2.5);
     expect(cache()->toArray('missing-array', ['fallback']))->toBe(['fallback']);
     expect(cache()->toEnum('missing-enum', CacheCastMacroStatus::class, CacheCastMacroStatus::Draft))
@@ -44,5 +44,5 @@ it('casts cached values from the cache facade and named stores', function () {
     cache()->store('array')->put('count', '7');
 
     expect(Cache::toString('name'))->toBe('Dmitry');
-    expect(cache()->store('array')->int('count'))->toBe(7);
+    expect(cache()->store('array')->toInt('count'))->toBe(7);
 });

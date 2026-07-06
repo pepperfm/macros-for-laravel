@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Illuminate\Cache;
+namespace Illuminate\Config;
 
 /**
  * @method bool toBool(string $key, mixed $default = null, bool $smart = true)
@@ -26,6 +26,6 @@ namespace Illuminate\Support\Facades;
  * @method static array toArray(string $key, array $default = [])
  * @method static mixed toEnum(string $key, string $enumClass, mixed $default = null)
  */
-final class Cache
+final class Config
 {
 }

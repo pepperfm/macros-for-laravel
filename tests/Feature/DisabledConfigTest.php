@@ -9,6 +9,6 @@ use Pepperfm\LaravelMacros\Tests\DisabledConfigTestCase;
 uses(DisabledConfigTestCase::class);
 
 it('does not register macros when disabled in config', function () {
-    expect(Arr::hasMacro('bool'))->toBeFalse();
+    expect(Arr::hasMacro('toBool'))->toBeFalse();
     expect(Collection::hasMacro('paginate'))->toBeFalse();
 });

@@ -2,4 +2,5 @@ parameters:
     stubFiles:
         - stubs/arr.stub.php
         - stubs/cache.stub.php
+        - stubs/config.stub.php
         - stubs/collection.stub.php
