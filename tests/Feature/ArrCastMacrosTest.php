@@ -19,6 +19,10 @@ it('registers arr cast macros from list config', function () {
     expect(Arr::toBool(['flag' => 'true'], 'flag'))->toBeTrue();
     expect(Arr::toBool(['flag' => 'nope'], 'flag'))->toBeFalse();
     expect(Arr::toInt(['count' => '42'], 'count'))->toBe(42);
+    expect(Arr::toInt([], 'count'))->toBeNull();
+    expect(Arr::toInt(['count' => 'invalid'], 'count'))->toBeNull();
+    expect(Arr::toInt(['count' => '12abc'], 'count'))->toBeNull();
+    expect(Arr::toInt(['count' => 'invalid'], 'count', 10))->toBe(10);
     expect(Arr::toFloat(['ratio' => '3.14'], 'ratio'))->toBe(3.14);
     expect(Arr::toString(['name' => 100], 'name'))->toBe('100');
     expect(Arr::toArray(['items' => [1, 2]], 'items'))->toBe([1, 2]);

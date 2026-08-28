@@ -15,7 +15,7 @@ uses(ConfigCastMacrosTestCase::class);
 
 it('casts config values from the config helper', function () {
     config()->set('feature.enabled', 'true');
-    config()->set('feature.count', '42px');
+    config()->set('feature.count', '42');
     config()->set('feature.ratio', '3.14');
     config()->set('feature.name', '  Dmitry  ');
     config()->set('feature.filters', ['active' => true]);
@@ -32,11 +32,18 @@ it('casts config values from the config helper', function () {
 it('casts defaults from the config helper', function () {
     expect(config()->toString('missing-string', 123))->toBe('123');
     expect(config()->toInt('missing-int', '42'))->toBe(42);
+    expect(config()->toInt('missing-nullable-int'))->toBeNull();
     expect(config()->toBool('missing-bool', 'yes'))->toBeTrue();
     expect(config()->toFloat('missing-float', '2.5'))->toBe(2.5);
     expect(config()->toArray('missing-array', ['fallback']))->toBe(['fallback']);
     expect(config()->toEnum('missing-enum', ConfigCastMacroStatus::class, ConfigCastMacroStatus::Draft))
         ->toBe(ConfigCastMacroStatus::Draft);
+});
+
+it('returns null for non-numeric config values without a default', function () {
+    config()->set('invalid-int', 'invalid');
+
+    expect(config()->toInt('invalid-int'))->toBeNull();
 });
 
 it('casts config values from the config facade', function () {

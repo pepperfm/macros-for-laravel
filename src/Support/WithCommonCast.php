@@ -24,7 +24,7 @@ trait WithCommonCast
             return ValueCaster::toBool($this->get($key, $default), $default, $smart);
         });
 
-        $macros->macro($target, 'toInt', function (string $key, mixed $default = null): int {
+        $macros->macro($target, 'toInt', function (string $key, mixed $default = null): ?int {
             return ValueCaster::toInt($this->get($key, $default), $default);
         });
 

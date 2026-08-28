@@ -11,7 +11,7 @@ use Pepperfm\LaravelMacros\Support\WithCommonCast;
 
 /*
  * config()->toBool(string $key, mixed $default = null, bool $smart = true): bool
- * config()->toInt(string $key, mixed $default = null): int
+ * config()->toInt(string $key, mixed $default = null): ?int
  * config()->toFloat(string $key, mixed $default = null): float
  * config()->toString(string $key, mixed $default = null, bool $trim = false): string
  * config()->toArray(string $key, array $default = []): array

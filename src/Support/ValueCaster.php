@@ -36,7 +36,7 @@ final class ValueCaster
         return (bool) $value;
     }
 
-    public static function toInt(mixed $value, mixed $default = null): int
+    public static function toInt(mixed $value, mixed $default = null): ?int
     {
         if (is_int($value)) {
             return $value;
@@ -50,22 +50,19 @@ final class ValueCaster
         if (is_string($value)) {
             $v = trim($value);
             if ($v === '') {
-                return (int) ($default ?? 0);
+                return $default === null ? null : (int) $default;
             }
             if (is_numeric($v)) {
                 return (int) $v;
             }
-            if (preg_match('/^-?\d+/', $v, $m) === 1) {
-                return (int) $m[0];
-            }
 
-            return (int) ($default ?? 0);
+            return $default === null ? null : (int) $default;
         }
         if (is_numeric($value)) {
             return (int) $value;
         }
 
-        return (int) ($default ?? 0);
+        return $default === null ? null : (int) $default;
     }
 
     public static function toFloat(mixed $value, mixed $default = null): float

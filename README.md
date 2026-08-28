@@ -70,6 +70,9 @@ Arr::toArray($array, 'items');
 Arr::toEnum($array, 'status', Status::class, $default = null);
 ```
 
+`toInt()` returns `null` for missing or non-numeric values when no default is provided.
+This behavior is consistent for the `Arr`, cache, and config variants.
+
 ### Arr native array helpers
 
 Available when `ArrNativeMacros` is enabled:

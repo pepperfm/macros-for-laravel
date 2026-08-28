@@ -15,7 +15,7 @@ uses(CacheCastMacrosTestCase::class);
 
 it('casts cached values from the cache helper', function () {
     cache()->put('enabled', 'true');
-    cache()->put('count', '42px');
+    cache()->put('count', '42');
     cache()->put('ratio', '3.14');
     cache()->put('name', '  Dmitry  ');
     cache()->put('filters', ['active' => true]);
@@ -32,11 +32,18 @@ it('casts cached values from the cache helper', function () {
 it('casts defaults from the cache helper', function () {
     expect(cache()->toString('missing-string', 123))->toBe('123');
     expect(cache()->toInt('missing-int', '42'))->toBe(42);
+    expect(cache()->toInt('missing-nullable-int'))->toBeNull();
     expect(cache()->toBool('missing-bool', 'yes'))->toBeTrue();
     expect(cache()->toFloat('missing-float', '2.5'))->toBe(2.5);
     expect(cache()->toArray('missing-array', ['fallback']))->toBe(['fallback']);
     expect(cache()->toEnum('missing-enum', CacheCastMacroStatus::class, CacheCastMacroStatus::Draft))
         ->toBe(CacheCastMacroStatus::Draft);
+});
+
+it('returns null for non-numeric cached values without a default', function () {
+    cache()->put('invalid-int', 'invalid');
+
+    expect(cache()->toInt('invalid-int'))->toBeNull();
 });
 
 it('casts cached values from the cache facade and named stores', function () {

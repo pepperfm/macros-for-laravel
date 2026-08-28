@@ -12,7 +12,7 @@ use Pepperfm\LaravelMacros\Support\ValueCaster;
 
 /*
  * Arr::toBool(ArrayAccess|array $array, string|int|null $key, mixed $default = null, bool $smart = true): bool
- * Arr::toInt(ArrayAccess|array $array, string|int|null $key, mixed $default = null): int
+ * Arr::toInt(ArrayAccess|array $array, string|int|null $key, mixed $default = null): ?int
  * Arr::toFloat(ArrayAccess|array $array, string|int|null $key, mixed $default = null): float
  * Arr::toString(ArrayAccess|array $array, string|int|null $key, mixed $default = null, bool $trim = false): string
  * Arr::toArray(ArrayAccess|array $array, string|int|null $key, array $default = []): array
@@ -32,13 +32,13 @@ final class ArrCastMacros implements MacroGroupContract
         });
 
         /*
-         * Arr::toInt($array, 'key', $default = null): int
+         * Arr::toInt($array, 'key', $default = null): ?int
          */
         $macros->macro(Arr::class, 'toInt', function (
             ArrayAccess|array $array,
             string|int|null $key,
             mixed $default = null,
-        ): int {
+        ): ?int {
             return ValueCaster::toInt(Arr::get($array, $key, $default), $default);
         });
 
